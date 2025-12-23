@@ -18,11 +18,11 @@
 
   <!-- 🔥 고정 배경 (이미지/영상 깔리는 영역) -->
   <div class="bg-media">
-    <!-- 이미지만 사용할 거면 video는 지워도 됩니다 -->
-    <!--
-    <video src="bg-video.mp4" autoplay muted loop playsinline></video>
-    -->
-    <div class="bg-media-overlay"></div>
+    <video class="bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="video/background_video.mp4" type="video/mp4" />
+      <!-- (선택) webm도 넣으면 더 호환 좋음 -->
+      <!-- <source src="img/background.webm" type="video/webm" /> -->
+    </video>
   </div>
 
   <!-- 🔥 실제 내용 -->
@@ -296,3 +296,4 @@
 
 </body>
 </html>
+
