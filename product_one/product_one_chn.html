@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PRODUCT</title>
+  <meta name="description" content="Rooicell Contact page (template)" />
+  <link rel="stylesheet" href="./product_one_chn.css" />
+</head>
+<body class="page page--light">
+  <!-- HEADER / NAV (사용자 제공 파일에서 그대로 사용) -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <a href="/index.html"><img src="img/chn.png" alt="logo"></a>
+        </div>
+
+        <ul class="nav-menu">
+          <li>
+            <span>INGREDIENTS</span>
+          </li>
+          <li>
+            <span><a href="/product/product_chn.html">PRODUCT</a></span>
+            <ul class="dropdown">
+              <li><a href="/product/product_chn.html">产品</a></li>
+              <li><a href="/product/product_chn.html">各类</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>COMMUNITY</span>
+            <ul class="dropdown">
+              <li><a href="#">新闻</a></li>
+              <li><a href="#">活动</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>HELP</span>
+            <ul class="dropdown">
+              <li><a href="#">咨询</a></li>
+              <li><a href="#">公告</a></li>
+            </ul>
+          </li>
+          <li>
+            <span><a href="/contact/contact_chn.html">CONTACT US</a></span>
+          </li>
+        </ul>
+
+        <div class="lang-switch">
+          <button><a href="product_one.html">KOR</a></button>
+          <button><a href="product_one_eng.html">ENG</a></button>
+          <button class="active" type="button">CHN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main main--detail" id="main">
+    <div class="container">
+
+      <section class="detail-layout">
+
+        <!-- LEFT: 썸네일 + 상세페이지(스크롤) -->
+        <div class="detail-left">
+
+          <!-- 상세 페이지(이미지/컨텐츠) -->
+          <div class="detail-content" aria-label="Product detail content">
+            <!-- 큰 제품 이미지(상단) -->
+            <figure class="hero-shot">
+              <img src="img/bo_ok.png" alt="제품 메인 이미지" class="hero-shot-img">
+            </figure>
+
+            <!-- 아래부터 상세페이지(길게) -->
+            <section class="detail-long">          
+              <img src="img/1.jpg" alt="상세 이미지 1">
+              <img src="img/2.jpg" alt="상세 이미지 2">
+              <img src="img/3.jpg" alt="상세 이미지 3">
+              <img src="img/4.jpg" alt="상세 이미지 3">              
+            </section>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: 설명(고정) -->
+        <aside class="detail-right" aria-label="Product description sticky">
+          <div class="sticky-box">
+
+            <div class="meta-brand">美根善生活健康</div>
+            <h2 class="pd-title">好习惯宝玉项目 天元宝玉<br>The Origin</h2>
+            <div class="pd-price">¥422.28</div>
+
+            <hr class="pd-line" />
+
+            <div class="pd-block">
+              <h3>优质原料</h3>
+              <p>将清泉生活健康的高级原料和沙参复合专利组成物,不是提取&浓缩,而是以自然原物72小时精心熬制的传统方式,以科学诀窍找到的最佳温度制造方式制作而成。</p>
+            </div>
+
+            <div class="pd-block">
+              <h3>沙蔘复合专利组合物</h3>
+              <p>国内最大的韩方专门企业玉泉堂中央研究所研究开发<br>专利注册[第10-2022325号]/专利名:镇咳、祛痰或抗炎用组成物</p>
+            </div>
+
+            <div class="pd-block">
+              <h3>没有6个 约定</h3>
+              <p>无甜味剂、着色剂、防腐剂、抗氧化剂、增味剂、显色剂，身体健康。</p>
+            </div>            
+            
+            <div class="pd-block">
+              <h3>呼吸系统健康</h3>
+              <p>1. 咳嗽次数减少<br>2.肺泡表面积增加<br>3.支气管粘液生成细胞活性化确认</p>
+            </div>
+
+            <button class="pd-cta" type="button">产品采购</button>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- SHOP MODAL (제품문의 팝업) -->
+  <div class="shop-modal" id="shopModal" aria-hidden="true">
+    <div class="shop-modal__backdrop" data-close="shopModal"></div>
+
+    <div class="shop-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="shopModalTitle">
+      <button class="shop-modal__close" type="button" aria-label="닫기" data-modal-close>×</button>
+
+      <h2 class="shop-modal__title" id="shopModalTitle">Shop Now</h2>
+
+      <div class="shop-list" role="list">
+
+        <!-- Naver Store -->
+        <a class="shop-row" role="listitem" href="https://smartstore.naver.com/malkeunseam/products/12078684822" target="_blank" rel="noopener" aria-label="Naver Store로 이동">
+          <div class="shop-row__left">
+            <span class="shop-row__badge">N</span>
+            <span class="shop-row__name">Naver Store</span>
+          </div>
+          <span class="shop-row__arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 맑은샘생활건강. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./product_one.js" defer></script>
+</body>
+</html>

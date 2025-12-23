@@ -1,0 +1,582 @@
+/* =========================================================
+   Rooicell PRODUCT ONE (FULL CSS)
+   - Header/Nav markup: user-provided 그대로 사용
+   - Footer 포함
+   - Product detail: sticky 정상 / footer 튀어나옴 방지 (scale 제거)
+========================================================= */
+
+/* ---------------------------
+   Fonts (Pretendard)
+--------------------------- */
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+
+/* ---------------------------
+   Base Reset
+--------------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body{
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  color:#111;
+  background:#fff;
+  line-height:1.5;
+  overflow-x:hidden;
+}
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+
+/* ---------------------------
+   Design Tokens
+--------------------------- */
+:root{
+  --max: 2100px;
+  --pad: 18px;
+  --line: rgba(17,17,17,.10);
+  --soft: #f6f7f9;
+  --shadow: 0 18px 50px rgba(0,0,0,.08);
+  --radius: 14px;
+}
+
+/* ---------------------------
+   Container
+--------------------------- */
+.container{
+  width:100%;
+  max-width: var(--max);
+  margin:0 auto;
+  padding: 0 var(--pad);
+}
+
+/* =========================================================
+   HEADER / NAV
+   - 구조는 그대로, 정렬은 viewport 기준
+========================================================= */
+header{
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  z-index:9999;
+  background: transparent;
+  border-bottom: 0;
+  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, opacity .6s ease;
+  opacity: 1;               /* ✅ 지금은 항상 보이게 (원하면 JS로 nav-visible 처리 가능) */
+  pointer-events: auto;
+}
+
+/* 스크롤 시 배경 (JS에서 header.scrolled 토글하면 적용됨) */
+header.scrolled{
+  background: rgba(255,255,255,.92);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 30px rgba(0,0,0,.06);
+}
+
+/* header 내부 container는 풀와이드 */
+header .container{
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+/* nav를 viewport 기준으로 중앙 정렬 */
+header .nav{
+  width: min(var(--max), 100vw);
+  margin-left: calc(50% - min(var(--max), 100vw)/2);
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+
+  height: 72px;
+  padding: 20px var(--pad) 0;  /* 위 여백 + 좌우 패딩 */
+  margin-bottom: 20px;
+}
+
+/* logo */
+.logo{ display:flex; align-items:center; justify-self: start; }
+.logo img{
+  height: 30px;
+  width:auto;
+  display:block;
+}
+
+/* menu */
+.nav-menu{
+  justify-self: center;
+  display:flex;
+  align-items:center;
+  gap: clamp(20px, 3vw, 60px);
+  font-size: 12px;
+}
+.nav-menu > li{
+  position:relative;
+  padding: 8px 0;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.nav-menu > li span{
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: clamp(12px, 0.9vw, 16px);
+  opacity: .92;
+}
+
+/* dropdown */
+.dropdown{
+  position:absolute;
+  left:0;
+  top: 120%;
+  min-width: 160px;
+  padding: 10px 0;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: .18s ease;
+}
+.nav-menu > li:hover .dropdown{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.dropdown a{
+  display:block;
+  padding: 9px 14px;
+  font-size: 13px;
+  color:#111;
+}
+.dropdown a:hover{
+  background: var(--soft);
+  font-weight: 700;
+}
+
+/* language */
+.lang-switch{
+  justify-self: end;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.lang-switch button{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.8);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor:pointer;
+  font-size: 11px;
+  color:#111;
+}
+.lang-switch button.active{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
+
+@media (max-width: 720px){
+  .nav-menu{ display:none; }
+}
+
+/* =========================================================
+   MAIN: PRODUCT DETAIL (FINAL)
+   - ✅ 오른쪽 sticky 정상
+   - ✅ scale 제거 (footer 밑 튀어나옴 방지)
+========================================================= */
+.main--detail{
+  /* header fixed 겹침 방지 */
+  padding-top: 140px;
+  padding-bottom: 80px;
+  overflow: visible; /* sticky 깨지지 않게 */
+}
+
+/* 레이아웃을 가운데 모아서 “지금 느낌” 유지 */
+.detail-layout{
+  width: min(2100px, 100%);          /* 전체 덩어리 크게 */
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1130px 730px; /* 좌/우 컬럼 자체를 키움 */
+  gap: 84px;
+  align-items: stretch;
+
+  /* ✅ scale 관련 방지 */
+  transform: none !important;
+  scale: 1 !important;
+
+}
+
+/* 왼쪽 */
+.detail-left{
+  display:block;
+  min-width: 0;
+}
+
+/* 상단 메인 이미지 박스 */
+.hero-shot{
+  width: 100%;
+  margin: 0;
+  border: 1px solid rgba(17,17,17,.10);
+  background: #fff;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+}
+.hero-shot img{
+  width: min(900px, 100%);
+  height: auto;
+  display:block;
+}
+
+/* 상세 이미지 */
+.detail-long{
+  margin-top: 24px;
+  display: grid;
+  gap: 18px;
+}
+.detail-long img{
+  width: 100%;
+  height: auto;
+  display:block;
+  border-radius: 6px;
+}
+
+/* 오른쪽 */
+.detail-right{
+  position: relative;
+  min-width: 0;
+  align-self: stretch;
+}
+
+/* ✅ sticky */
+.sticky-box{
+  position: sticky;
+  top: 110px; /* header 아래 */
+  border: 1px solid rgba(17,17,17,.12);
+  background:#fff;
+  padding: 80px;
+  zoom: 1.2;
+}
+
+/* Typography */
+.meta-brand{
+  font-size: 12px;
+  color: rgba(17,17,17,.55);
+  letter-spacing: .06em;
+}
+.pd-title{
+  margin-top: 10px;
+  font-size: 22px;
+  letter-spacing: -.02em;
+}
+.pd-price{
+  margin-top: 14px;
+  font-weight: 800;
+  font-size: 18px;
+}
+.pd-line{
+  border: none;
+  height: 1px;
+  background: rgba(17,17,17,.12);
+  margin: 22px 0;
+}
+.pd-block{
+  margin-top: 18px;
+}
+.pd-block h3{
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.pd-block p{
+  font-size: 13px;
+  color: rgba(17,17,17,.60);
+  line-height: 1.7;
+}
+
+/* CTA */
+.pd-cta{
+  margin-top: 26px;
+  width: 100%;
+  height: 52px;
+  border-radius: 8px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+.pd-cta:hover{ opacity: .92; }
+
+/* Responsive */
+@media (max-width: 1100px){
+  .detail-layout{
+    width: 100%;
+    grid-template-columns: 1fr 420px;
+    gap: 28px;
+  }
+}
+@media (max-width: 980px){
+  .detail-layout{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .sticky-box{
+    position: relative; /* 모바일 고정 해제 */
+    top: auto;
+  }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer {
+  background: rgba(17, 17, 17, 0.92);
+  color: #eee;
+  padding: 32px 0 40px;
+  font-size: 12px;
+  margin-top: 80px;
+}
+footer .container {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+footer p { opacity: 0.8; }
+
+main, section, .container, .detail-layout, .detail-right{
+  overflow: visible !important;
+  transform: none !important;
+}
+
+/* ✅ STICKY 강제 복구 패치 (맨 아래에 붙이세요) */
+html, body,
+main, .main, .main--detail,
+.container, .detail-layout, .detail-right {
+  overflow: visible !important;     /* sticky 깨는 overflow 차단 */
+  transform: none !important;       /* sticky 깨는 transform 차단 */
+}
+
+.detail-layout {
+  scale: 1 !important;              /* 혹시 남아있는 scale 차단 */
+}
+
+/* sticky 자체는 이것만 있으면 됩니다 */
+.sticky-box{
+  position: sticky !important;
+  top: 110px;                       /* header 아래 */
+  align-self: start;                /* grid 안에서 안전장치 */
+}
+
+/* =========================
+   SHOP MODAL
+========================= */
+.shop-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: none;
+
+  /* 🔥 추가 */
+  align-items: center;   /* 세로 중앙 */
+  justify-content: center; /* 가로 중앙 */
+}
+.shop-modal.is-open{ display:flex; }
+
+.shop-modal__backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.35);
+}
+
+.shop-modal__dialog{
+  position: relative;
+  width: min(720px, calc(100vw - 40px));
+  margin: 0;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.25);
+  padding: 34px 34px 28px;
+}
+
+.shop-modal__close{
+  position:absolute;
+  right: 18px;
+  top: 14px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  font-size: 30px;
+  line-height: 1;
+  cursor:pointer;
+  color: rgba(17,17,17,.45);
+}
+.shop-modal__close:hover{ color: rgba(17,17,17,.75); }
+
+.shop-modal__title{
+  font-size: clamp(34px, 3.2vw, 56px);
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+/* list container */
+.shop-list{
+  display: grid;
+  gap: 14px;
+}
+
+/* Amazon top card */
+.shop-card{
+  border: 1px solid rgba(17,17,17,.10);
+  background: rgba(17,17,17,.03);
+  border-radius: 12px;
+  padding: 18px 18px 12px;
+}
+
+.shop-card__brand{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.shop-card__badge{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  background: #0f3b33;
+  color: #fff;
+  font-weight: 800;
+}
+
+.shop-card__name{
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f3b33;
+}
+
+.shop-card__links{
+  border-top: 1px solid rgba(17,17,17,.10);
+  padding-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.shop-link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 10px 6px;
+  border-radius: 10px;
+  color: #0f3b33;
+  font-weight: 700;
+}
+.shop-link:hover{
+  background: rgba(15,59,51,.06);
+}
+.shop-link__arrow{ opacity: .8; }
+
+/* rows */
+.shop-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border: 1px solid rgba(17,17,17,.10);
+  background: rgba(17,17,17,.03);
+  border-radius: 12px;
+  padding: 18px;
+  transition: background .15s ease, transform .15s ease;
+}
+.shop-row:hover{
+  background: rgba(15,59,51,.06);
+  transform: translateY(-1px);
+}
+
+.shop-row__left{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+
+.shop-row__badge{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  background: #0f3b33;
+  color: #fff;
+  font-weight: 800;
+}
+
+.shop-row__name{
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f3b33;
+}
+
+.shop-row__arrow{
+  color:#0f3b33;
+  opacity:.8;
+  font-size: 18px;
+}
+
+/* 모달 열리면 body 스크롤 잠금 */
+body.modal-open{
+  overflow: hidden;
+}

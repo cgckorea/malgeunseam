@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CONTACT</title>
+  <meta name="description" content="Rooicell Contact page (template)" />
+  <link rel="stylesheet" href="./contact.css" />
+</head>
+<body class="page page--light">
+  <!-- HEADER / NAV (사용자 제공 파일에서 그대로 사용) -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <a href="/index.html"><img src="img/logo_color.png" alt="logo"></a>
+        </div>
+
+        <ul class="nav-menu">
+          <li>
+            <span>INGREDIENTS</span>
+          </li>
+          <li>
+            <span><a href="/product/product.html">PRODUCT</a></span>
+            <ul class="dropdown">
+              <li><a href="/product/product.html">제품</a></li>
+              <li><a href="/product/product.html">유형별</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>COMMUNITY</span>
+            <ul class="dropdown">
+              <li><a href="#">뉴스</a></li>
+              <li><a href="#">이벤트</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>HELP</span>
+            <ul class="dropdown">
+              <li><a href="#">문의사항</a></li>
+              <li><a href="#">공지사항</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>CONTACT US</span>
+          </li>
+        </ul>
+
+        <div class="lang-switch">
+          <button class="active" type="button">KOR</button>
+          <button><a href="contact_eng.html">ENG</a></button>
+          <button><a href="contact_chn.html">CHN</a></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Contact hero">
+    <div class="container hero-inner">
+      <div class="hero-title">
+        <h1>Contact</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main class="main" id="main">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>문의하기</h2>
+          <div class="sub">Contact / Address / Tel / FAX / E-mail</div>
+        </div>
+        <span class="pill">CONTACT</span>
+      </div>
+
+      <div class="grid">
+        <!-- CONTACT INFO -->
+        <section class="card" aria-label="Contact information">
+          <div class="card-head">
+            <p>Contact</p>
+          </div>
+
+          <div class="card-body">
+            <dl class="info">
+              <div class="row">
+                <dt>Address</dt>
+                <dd>서울특별시 영등포구 당산로37길 16</dd>
+              </div>
+
+              <div class="row">
+                <dt>Tel</dt>
+                <dd><a href="tel:1577-4590">1588-6832</a></dd>
+              </div>
+
+              <div class="row">
+                <dt>E-mail</dt>
+                <dd><a href="mailto:rooicell@lifetogether.co.kr">malgeunseam@naver.com</a></dd>
+              </div>
+            </dl>
+
+            <div class="map">
+              <div class="map-inner">
+                <div class="map-desc">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1884.
+                    0682600080747!2d126.89516004022627!3d37.53055716125483!2m3!1f0!2
+                    f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9ee9ceedb753%3A0x
+                    36efce4d07263088!2z7ISc7Jq47Yq567OE7IucIOyYgeuTse2PrOq1rCDri7nsgr
+                    DroZwzN-q4uCAxNg!5e0!3m2!1sko!2skr!4v1766388013518!5m2!1sko!2skr"
+                     width="1046" height="368" style="border:0;" allowfullscreen="" 
+                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FORM -->
+        <section class="card" aria-label="Inquiry form">
+          <div class="card-head">
+            <strong>Q &amp; A</strong>
+          </div>
+
+          <div class="card-body">
+            <form id="contactForm" class="form">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="field">
+                <label for="mobile">Mobile</label>
+                <input id="mobile" name="mobile" type="tel" autocomplete="tel" required />
+              </div>
+
+              <div class="field">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                  <option value="" selected disabled>선택해주세요</option>
+                  <option value="KOR">KOR</option>
+                  <option value="ENG">ENG</option>
+                  <option value="CHN">CHN</option>
+                  <option value="ETC">ETC</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="문의 내용을 입력해주세요." required></textarea>
+              </div>
+
+              <button class="btn" type="submit" id="submitBtn">문의하기</button>
+              <p class="helper">데모 템플릿입니다. 실제 전송은 서버(API/메일/DB) 연동이 필요합니다.</p>
+
+              <div class="toast" id="toast" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 맑은샘생활건강. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./contact.js" defer></script>
+</body>
+</html>

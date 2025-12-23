@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PRODUCT</title>
+  <meta name="description" content="Rooicell Contact page (template)" />
+  <link rel="stylesheet" href="./product_one.css" />
+</head>
+<body class="page page--light">
+  <!-- HEADER / NAV (사용자 제공 파일에서 그대로 사용) -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <a href="/index.html"><img src="img/eng.png" alt="logo"></a>
+        </div>
+
+        <ul class="nav-menu">
+          <li>
+            <span>INGREDIENTS</span>
+          </li>
+          <li>
+            <span><a href="/product/product_eng.html">PRODUCT</a></span>
+            <ul class="dropdown">
+              <li><a href="/product/product_eng.html">Product</a></li>
+              <li><a href="/product/product_eng.html">By Type</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>COMMUNITY</span>
+            <ul class="dropdown">
+              <li><a href="#">News</a></li>
+              <li><a href="#">Event</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>HELP</span>
+            <ul class="dropdown">
+              <li><a href="#">Questions</a></li>
+              <li><a href="#">Notice</a></li>
+            </ul>
+          </li>
+          <li>
+            <span><a href="/contact/contact_eng.html">CONTACT US</a></span>
+          </li>
+        </ul>
+
+        <div class="lang-switch">
+          <button><a href="product_one.html">KOR</a></button>
+          <button class="active" type="button">ENG</button>
+          <button><a href="product_one_chn.html">CHN</a></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main main--detail" id="main">
+    <div class="container">
+
+      <section class="detail-layout">
+
+        <!-- LEFT: 썸네일 + 상세페이지(스크롤) -->
+        <div class="detail-left">
+
+          <!-- 상세 페이지(이미지/컨텐츠) -->
+          <div class="detail-content" aria-label="Product detail content">
+            <!-- 큰 제품 이미지(상단) -->
+            <figure class="hero-shot">
+              <img src="img/bo_ok.png" alt="제품 메인 이미지" class="hero-shot-img">
+            </figure>
+
+            <!-- 아래부터 상세페이지(길게) -->
+            <section class="detail-long">          
+              <img src="img/1.jpg" alt="상세 이미지 1">
+              <img src="img/2.jpg" alt="상세 이미지 2">
+              <img src="img/3.jpg" alt="상세 이미지 3">
+              <img src="img/4.jpg" alt="상세 이미지 3">              
+            </section>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: 설명(고정) -->
+        <aside class="detail-right" aria-label="Product description sticky">
+          <div class="sticky-box">
+
+            <div class="meta-brand">MALGEUNSEAM</div>
+            <h2 class="pd-title">Good Habit Book Project<BR>Chunwon Book The Origin</h2>
+            <div class="pd-price">$59.98</div>
+
+            <hr class="pd-line" />
+
+            <div class="pd-block">
+              <h3>Premium raw materials</h3>
+              <p>It is manufactured with the optimal temperature manufacturing method found with scientific know-how in the traditional method of extracting and concentrating premium raw materials and ginseng composite patent compositions of clear spring life health and carefully heating them for 72 hours as natural raw materials.</p>
+            </div>
+
+            <div class="pd-block">
+              <h3>Codonopsis lanceolata Complex Patent Composition</h3>
+              <p>Korea's largest oriental medicine company, Okchundang Central Research Institute, Inc. <br> Patent Registration [No. 10-2022325]/patent name: composition for Jinhae, Geodam or anti-inflammatory properties</p>
+            </div>
+
+            <div class="pd-block">
+              <h3>A promise of no six</h3>
+              <p>It is healthy without sweeteners, colorants, preservatives, antioxidants, flavor enhancers, and colorants.</p>
+            </div>            
+            
+            <div class="pd-block">
+              <h3>respiratory health</h3>
+              <p>1. Check the number of coughs decreased<br>2. alveolar surface area increase<br>3. Confirmation of activation of bronchial mucus-producing cells</p>
+            </div>
+
+            <button class="pd-cta" type="button">Buy</button>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- SHOP MODAL (제품문의 팝업) -->
+  <div class="shop-modal" id="shopModal" aria-hidden="true">
+    <div class="shop-modal__backdrop" data-close="shopModal"></div>
+
+    <div class="shop-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="shopModalTitle">
+      <button class="shop-modal__close" type="button" aria-label="닫기" data-modal-close>×</button>
+
+      <h2 class="shop-modal__title" id="shopModalTitle">Shop Now</h2>
+
+      <div class="shop-list" role="list">
+
+        <!-- Naver Store -->
+        <a class="shop-row" role="listitem" href="https://smartstore.naver.com/malkeunseam/products/12078684822" target="_blank" rel="noopener" aria-label="Naver Store로 이동">
+          <div class="shop-row__left">
+            <span class="shop-row__badge">N</span>
+            <span class="shop-row__name">Naver Store</span>
+          </div>
+          <span class="shop-row__arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 맑은샘생활건강. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./product_one.js" defer></script>
+</body>
+</html>
