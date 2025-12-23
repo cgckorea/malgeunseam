@@ -1,0 +1,906 @@
+/* ===========================
+   RESET / BASE
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  color: #222;
+  line-height: 1.5;
+  background: #000;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ===========================
+   FIXED BACKGROUND
+=========================== */
+.bg-media {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("img/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.9);
+  display: none;
+}
+
+.bg-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bg-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bg-media-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+/* ===========================
+   PAGE WRAP / CONTAINER
+=========================== */
+.page-wrap {
+  position: relative;
+  min-height: 100vh;
+  z-index: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1960px;   /* ✅ 1920 -> 2230 (빨간줄 기준과 동일) */
+  margin: 0 auto;
+  padding: 0 80px;     /* ✅ section-wide-inner와 동일 */
+}
+
+/* ===========================
+   HEADER / NAV
+=========================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+  transition:
+    backdrop-filter 0.3s ease,
+    border-bottom 0.3s ease,
+    opacity 1s ease;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+header.nav-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav {
+  height: clamp(60px, 7vw, 90px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.logo,
+.lang-switch {
+  transition: transform 0.4s ease-out, opacity 0.2s ease;
+}
+
+header.scrolled .logo {
+  transform: translateX(-5vw);
+}
+
+header.scrolled .lang-switch {
+  transform: translateX(5vw);
+}
+
+/* 로고 컨테이너(기존 .logo 유지) */
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ✅ 추가: 로고 이미지 크기 고정 */
+.logo img {
+  height: 20px;
+  width: auto;
+  display: block;
+
+  transform: scale(1.5);
+  transform-origin: left center;
+}
+
+.nav-menu {
+  display: flex;
+  gap: clamp(20px, 3vw, 60px);
+  font-size: 12px;
+}
+
+.nav-menu > li {
+  position: relative;
+  padding: 8px 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-menu > li span {
+  font-size: clamp(12px, 0.9vw, 16px);
+  letter-spacing: 0.04em;
+}
+
+.dropdown {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  padding: 12px 0;
+  min-width: 140px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: 0.18s ease;
+  z-index: 10;
+}
+
+.nav-menu > li:hover .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdown li a {
+  display: block;
+  padding: 8px 18px;
+  font-size: 13px;
+}
+
+.dropdown li a:hover {
+  font-weight: 800;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.lang-switch button {
+  border: none;
+  background: transparent;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.lang-switch button.active {
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+}
+
+/* ===========================
+   MAIN / SECTIONS / HERO
+=========================== */
+main {
+  margin-top: 72px;
+  min-height: calc(100vh - 72px);
+}
+
+.section {
+  padding: 96px 0;
+}
+
+.hero {
+  position: relative;
+  /* ✅ sticky 레이아웃 기준으로 hero는 과한 transform 제거 */
+  transform: none !important;
+  min-height: 150vh;
+}
+
+/* 타이틀/내부 wrapper는 유지 */
+.hero-tagline-wrap {
+  position: relative;
+  z-index: 50;
+  padding-top: 18vh;
+
+  /* ✅ PRODUCT(section-wide-inner)와 동일 기준선 */
+  max-width: 2230px;
+  margin: 0 auto;
+  padding-left: 80px;
+  padding-right: 80px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero-tagline {
+  font-size: clamp(56px, 8vw, 200px);
+  letter-spacing: clamp(0.04em, 0.18vw, 0.14em);
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(var(--tagY, 0px));
+  animation: taglineUp 1.2s 0.3s ease-out forwards;
+  font-family: "Noto Serif", serif !important;
+
+  /* 기존 값 유지 (원하면 여기 조절) */
+  margin-top: 50vh;
+  position: relative;
+  z-index: 60;
+}
+
+@keyframes taglineUp {
+  from { opacity: 0; transform: translateY(100px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   ✅ HERO Split Layout (Overlay Sticky + Full-width Rail)
+   - 오른쪽 레일은 PRODUCT와 동일한 "전체 폭" 사용
+   - 왼쪽 텍스트는 overlay로 올라가서 폭을 빼앗지 않음
+========================================================= */
+
+.hero-split{
+  position: relative;
+  width: 100%;
+}
+
+/* ✅ 좌측: PRODUCT 좌측 라인에 붙는 sticky */
+.hero-sticky{
+  position: sticky;
+  top: calc(clamp(60px, 7vw, 90px) + 32px);
+  z-index: 20;
+
+  width: 420px;   /* 텍스트 박스 폭 */
+}
+
+/* ✅ 기존 meta의 패럴럭스/스케일/마이너스 마진 제거(Sticky 안 깨지게) */
+.hero-tagline-meta {
+  position: relative;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  transform: none !important;
+  margin-top: 0 !important;
+}
+
+.hero-tagline-eyebrow {
+  font-size: 40px;
+  font-weight: 300;
+  width: 1400px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-tagline-text {
+  width: 700px;
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 1.30;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.75);
+  word-break: keep-all;   /* ✅ 한국어 단어 중간 쪼개짐 방지 */
+  overflow-wrap: normal;  /* ✅ 불필요한 강제 줄바꿈 방지 */
+  padding-top: 20pxpx;
+}
+
+.hero-tagline-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-tagline-cta-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.hero-tagline-cta:hover .hero-tagline-cta-icon {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ✅ 우측: PRODUCT 우측 라인에 붙도록 "우측 정렬 레일" */
+.hero-rail{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;  /* ✅ 우측 라인에 딱 붙게 */
+}
+
+/* 기존 hero-layout 숨김 유지 */
+.hero-layout { display: none; }
+
+/* ===========================
+   PRODUCTS / INSTAGRAM
+=========================== */
+.section-title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0px;
+  gap: 24px;
+}
+
+.section-kicker {
+  font-size: 130px;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0px;
+}
+
+.section-title {
+  font-size: 26px;
+  color: #fff;
+}
+
+.section-desc {
+  font-size: 14px;
+  color: #fff;
+  max-width: 420px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  border-radius: 18px;
+  border: 1px solid #eee;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.product-thumb {
+  height: 180px;
+  border-radius: 12px;
+  background: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.product-tag {
+  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.product-name { font-size: 14px; font-weight: 600; }
+.product-price { font-size: 13px; font-weight: 600; margin-top: 4px; }
+.product-link { margin-top: auto; font-size: 12px; color: #555; }
+.product-link:hover { text-decoration: underline; }
+
+.insta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.insta-handle {
+  font-weight: 600;
+  font-size: 50px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #fff;
+  line-height: 10px;
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.insta-item{
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #e5e7eb;
+  aspect-ratio: 4 / 5;
+}
+
+.insta-item img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.45s ease;
+}
+
+.insta-item::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.0);
+  transition: background 0.45s ease;
+  z-index: 2;
+}
+
+.insta-item::before{
+  content: "♥";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  z-index: 3;
+
+  font-size: 44px;
+  line-height: 1;
+  color: #ff4d6d;
+  text-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+.insta-item:hover::after{
+  background: rgba(0,0,0,0.35);
+}
+
+.insta-item:hover::before{
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(3);
+}
+
+.insta-item:hover img{
+  transform: scale(1.03);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  background: rgba(17, 17, 17, 0.92);
+  color: #eee;
+  padding: 32px 0 40px;
+  font-size: 12px;
+  margin-top: 80px;
+  margin-right: 263px;
+}
+
+footer .container {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+footer p { opacity: 0.8; }
+
+/* ===========================
+   PHILO (✅ 오른쪽 레일 폭에 맞게 동작하도록 수정)
+   - 이제 philo-section은 hero-rail 내부로 들어간다는 전제
+=========================== */
+.philo-section{
+  width: clamp(880px, 55vw, 1200px);
+  padding: 0;
+  margin-top: -220px;
+
+  /* 기존 변수는 남겨도 되지만, 레일 내부에선 의미 없어서 기본화 */
+  --philo-gutter-left: 0px;
+  --philo-gutter-right: 0px;
+  --philo-max: 100%;
+}
+
+/* 기존 구조(.container)를 쓰는 경우도 대비 */
+.philo-section .container{
+  width: 100%;
+  max-width: var(--philo-max);
+  margin: 0 auto;
+  padding-left: var(--philo-gutter-left);
+  padding-right: var(--philo-gutter-right);
+}
+
+.philo-cards {
+  width: calc(100% - 116px);   /* 좌우 58px 기준 유지 */
+  max-width: 1680px;           /* 🔥 이 값만 키우는 것 */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -210px;
+
+  display: grid;
+  grid-template-columns: 1fr; /* 3개 고정 */
+  gap: 32px;
+}
+
+/* 카드 */
+.philo-card {
+  width: 100%;
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  padding: clamp(36px, 4vw, 64px);
+  min-height: clamp(260px, 28vw, 420px);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+
+  filter: brightness(0.8) contrast(1.05) saturate(0.95);
+  transition: filter 1500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.philo-card:hover {
+  filter: brightness(1) contrast(1) saturate(1);
+}
+
+.philo-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: background 1500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+.philo-card:hover::before {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.philo-title,
+.philo-desc {
+  position: absolute;
+  left: clamp(28px, 3vw, 64px);
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.philo-title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  bottom: clamp(70px, 7vw, 120px);
+  margin: 0;
+  font-weight: 500;
+  font-size: clamp(32px, 3.2vw, 56px);
+  letter-spacing: 0.02em;
+}
+
+.philo-desc {
+  bottom: clamp(28px, 3vw, 56px);
+  margin: 0;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 720px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1200ms ease, transform 1400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 992px) {
+  .container { padding: 0 24px; }
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .instagram-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* ✅ 1024 이하: split을 1열로 (모바일에서는 sticky 해제) */
+@media (max-width: 1024px) {
+  .hero { 
+    min-height: 140vh;
+    overflow: hidden;
+  }
+
+  .hero-tagline-wrap{
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero-tagline{
+    margin-top: 0 !important;
+    white-space: normal;
+    line-height: 0.95;
+  }
+
+  .hero-split{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .hero-sticky{
+    position: relative;
+    top: auto;
+    width: auto;
+  }
+
+  .hero-rail{
+    padding-left: 0;  
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-tagline-wrap { padding-top: 14vh; }
+  .hero-tagline-meta { max-width: 80%; }
+  .hero-tagline-text { font-size: 13px; }
+
+  .philo-card {
+    min-height: 220px;
+    padding: 28px;
+  }
+
+  .philo-title { bottom: 88px; }
+  .philo-desc  { bottom: 28px; }
+}
+
+@media (max-width: 640px) {
+  .nav-menu { display: none; }
+  .section { padding: 72px 0; }
+  .product-grid { grid-template-columns: 1fr; }
+  .instagram-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.hero-tagline-meta,
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tagline-meta,
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ✅ 풀폭 섹션 컨테이너 */
+.container-wide{
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ✅ 내부 콘텐츠 기준선 */
+.section-wide-inner{
+  max-width: 2230px;
+  margin: 0 auto;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+/* ✅ 모바일 */
+@media (max-width: 992px){
+  .section-wide-inner{
+    max-width: none;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.product-thumb{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateY(8%) scale(1);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: center center;
+}
+
+.product-card:hover .product-thumb img {
+  transform: translateY(8%) scale(1.15);
+}
+
+.section-kicker--philo{
+  font-size: 130px;
+  font-family: "Times New Roman", Times, serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  line-height: 0.85 !important;
+  display: inline-block !important;
+}
+  .hero-tagline-wrap{
+    padding-left: 24px;
+    padding-right: 24px;
+    --tagY: 0px;
+    transform: translateY(var(--tagY));
+  }
+
+/* ✅ HERO 안에서만 philo 카드박스 폭/정렬 제어 */
+.hero .philo-section{
+  width: min(1450px, 100%);  /* ✅ 여기 수치(1000) 줄이면 카드박스 더 좁아짐 */
+  margin-left: auto;         /* ✅ 우측 정렬 */
+  margin-top: 0 !important;  /* ✅ 기존 -220px 같은 값 무력화 */
+  padding: 0;
+}
+
+/* ✅ philo-section 내부 .container가 패딩(80px)을 또 먹으면 기준선이 틀어짐 → 제거 */
+.hero .philo-section .container{
+  max-width: none;
+  padding: 0;
+}
+
+/* ✅ 기존 philo-section의 좌우 거터 변수도 히어로에서는 무시 */
+.hero .philo-section{
+  --philo-gutter-left: 0px;
+  --philo-gutter-right: 0px;
+}
+
+/* =========================
+   ✅ 미세 보정(여백으로 라인 맞추기)
+   - 숫자만 조절하세요
+========================= */
+:root{
+  --hero-text-nudge: 58px;   /* ✅ 텍스트를 오른쪽으로 밀기(좌측 여백 증가) */
+  --hero-card-nudge: 58px;   /* ✅ 카드박스를 왼쪽으로 당기기(우측 여백 증가) */
+}
+
+/* 1) 왼쪽 텍스트: 좌측 여백 추가 */
+.hero .hero-sticky{
+  padding-left: var(--hero-text-nudge);
+}
+
+/* 2) 오른쪽 카드박스: 우측 여백 추가 (= 전체에서 살짝 왼쪽으로) */
+.hero .philo-section{
+  margin-right: var(--hero-card-nudge);
+}
+
+.hero .hero-tagline{
+  padding-left: var(--hero-text-nudge);
+}
+
+/* ✅ 상품 슬라이더 */
+.product-slider{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 18px;
+}
+
+.product-track{
+  display: flex;
+  gap: 24px;              /* 기존 grid gap과 맞춤 */
+  transition: transform 420ms ease;
+  will-change: transform;
+}
+
+/* ✅ 화면에 4개 보이도록(= 25%) */
+.product-slider .product-card{
+  flex: 0 0 calc((100% - 24px * 3) / 4);
+}
+
+/* 버튼 */
+.product-nav{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.25s ease;
+}
+
+.product-btn:disabled{
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ✅ 마우스 오버 */
+.product-nav button:hover {
+  background: rgba(255, 255, 255, 0.22); /* 반투명 흰색 */
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+/* ✅ 비활성화 상태 */
+.product-nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.product-nav button:disabled:hover {
+  background: rgba(255, 255, 255, 0);
+  transform: none;
+}
+
+/* 반응형: 태블릿 2개, 모바일 1개 */
+@media (max-width: 992px){
+  .product-slider .product-card{
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+}
+@media (max-width: 640px){
+  .product-slider .product-card{
+    flex: 0 0 100%;
+  }
+}

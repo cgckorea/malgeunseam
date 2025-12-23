@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>맑은샘생활건강</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ 외부 CSS 파일 연결 -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- ✅ 외부 JS 파일 연결 -->
+  <script src="main.js" defer></script>
+
+</head>
+<body>
+
+  <!-- 🔥 고정 배경 (이미지/영상 깔리는 영역) -->
+  <div class="bg-media">
+    <video class="bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="video/background_video.mp4" type="video/mp4" />
+      <!-- (선택) webm도 넣으면 더 호환 좋음 -->
+      <!-- <source src="img/background.webm" type="video/webm" /> -->
+    </video>
+  </div>
+
+  <!-- 🔥 실제 내용 -->
+  <div class="page-wrap">
+    <!-- HEADER -->
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <div class="logo">
+            <img src="img/logo.png" alt="logo">
+          </div>
+
+          <ul class="nav-menu">
+            <li>
+              <span>INGREDIENTS</span>
+            </li>
+            <li>
+              <span><a href="product/product.html">PRODUCT</a></span>
+              <ul class="dropdown">
+                <li><a href="product/product.html">제품</a></li>
+                <li><a href="product/product.html">유형별</a></li>
+              </ul>
+            </li>
+            <li>
+              <span>COMMUNITY</span>
+              <ul class="dropdown">
+                <li><a href="#">뉴스</a></li>
+                <li><a href="#">이벤트</a></li>
+              </ul>
+            </li>
+            <li>
+              <span>HELP</span>
+              <ul class="dropdown">
+                <li><a href="#">문의사항</a></li>
+                <li><a href="#">공지사항</a></li>
+              </ul>
+            </li>
+            <li>
+              <span><a href="contact/contact.html">CONTACT US</a></span>
+            </li>
+          </ul>
+
+          <div class="lang-switch">
+            <button class="active">KOR</button>
+            <button><a href="index_eng.html">ENG</a></button>
+            <button><a href="index_chn.html">CHN</a></button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <section class="hero">
+        <div class="hero-tagline-wrap">
+          <div class="hero-tagline">Beyond the Daily</div>
+            <div class="hero-split">
+              <!-- ✅ 왼쪽: 고정 텍스트 -->
+              <aside class="hero-sticky">
+                <div class="hero-tagline-meta">
+                  <p class="hero-tagline-eyebrow">Slow, Grow, Flow</p>
+                  <p class="hero-tagline-text">
+                    일상을 넘어, 맑은샘생활건강<br />
+                    모두의 건강이 맑아지도록<br />
+                    일상 그 이상을 제안합니다
+                  </p>
+                  <a href="#" class="hero-tagline-cta">
+                    <span class="hero-tagline-cta-icon">+</span>
+                    <span class="hero-tagline-cta-label">BRAND STORY</span>
+                  </a>
+                </div>
+              </aside>
+
+              <!-- ✅ 오른쪽: 이미지 + 카드(같은 폭) -->
+              <div class="hero-rail">
+
+                <!-- ✅ 기존 philo-section을 여기로 옮겨서 "오른쪽 레일"에 붙입니다 -->
+                <section class="philo-section">
+                  <div class="philo-cards">
+                    <!-- Card 1 -->
+                    <article class="philo-card reveal" style="--d: 0ms" data-bg="img/forest.jpg">
+                      <h3 class="philo-title">Beyond Slow</h3>
+                      <p class="philo-desc">
+                        조급하지 않은 삶, 천천히 건강을 쌓는 시간<br />
+                        자연의 리듬으로부터 오는 느림의 에너지
+                      </p>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="philo-card reveal" style="--d: 120ms" data-bg="img/field.jpg">
+                      <h3 class="philo-title">Beyond Grow</h3>
+                      <p class="philo-desc">
+                        깨끗한 땅에서 피어나는 지속의 가치<br />
+                        지구와 함께 자라나는 건강한 선택
+                      </p>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="philo-card reveal" style="--d: 240ms" data-bg="img/water.jpg">
+                      <h3 class="philo-title">Beyond Flow</h3>
+                      <p class="philo-desc">
+                        몸의 흐름을 깨우는 생명의 순환<br />
+                        맑은 물처럼 건강이 스며드는 순간
+                      </p>
+                    </article>
+                  </div>
+                </section>
+              </div>
+            </div>
+        </div>
+
+        <!-- 기존 hero-layout은 일단 안 쓰면 숨김 처리됨 -->
+        <div class="container hero-layout"></div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="section section--translucent section-wide">
+        <div class="container-wide">
+          <div class="section-wide-inner">
+
+            <div class="section-title-wrap">
+              <div>
+                <div class="section-kicker">PRODUCT</div>
+              </div>
+
+              <!-- ✅ 슬라이드 버튼 -->
+              <div class="product-nav" aria-label="Product slider controls">
+                <button class="product-btn" type="button" data-product-dir="-1" aria-label="Prev">‹</button>
+                <button class="product-btn" type="button" data-product-dir="1" aria-label="Next">›</button>
+              </div>
+            </div>
+
+            <!-- ✅ 슬라이더 -->
+            <div class="product-slider" id="productSlider">
+              <div class="product-track">
+
+                <article class="product-card">
+                  <div class="product-thumb"><img src="img/bo_ok.png" alt="bo_ok"></div>
+                  <div class="product-tag">CHEONWON BO-OK</div>
+                  <div class="product-name">좋은습관 보옥프로젝트 천원보옥 더 오리진</div>
+                  <div class="product-price">89,000원</div>
+                  <a href="product/product.html" class="product-link">자세히 보기 →</a>
+                </article>
+
+                <article class="product-card">
+                  <div class="product-thumb"><img src="img/muscles_plus.png" alt="muscles_plus"></div>
+                  <div class="product-tag">Muscles: Strong plus</div>
+                  <div class="product-name">근력 관절 근:강한 커큐민&NAG 플러스</div>
+                  <div class="product-price">79,000원</div>
+                  <a href="product/product.html" class="product-link">자세히 보기 →</a>
+                </article>
+
+                <article class="product-card">
+                  <div class="product-thumb"><img src="img/muscles.png" alt="muscles"></div>
+                  <div class="product-tag">Muscles: Strong</div>
+                  <div class="product-name">근력 관절 근:강한 커큐민&NAG</div>
+                  <div class="product-price">43,000원</div>
+                  <a href="product/product.html" class="product-link">자세히 보기 →</a>
+                </article>
+
+                <article class="product-card">
+                  <div class="product-thumb"><img src="img/sleep.png" alt="sleep"></div>
+                  <div class="product-tag">Sleep: comfortable</div>
+                  <div class="product-name">수면건강 잠:편한 아쉬아간다</div>
+                  <div class="product-price">49,000원</div>
+                  <a href="product/product.html" class="product-link">자세히 보기 →</a>
+                </article>
+
+                <article class="product-card">
+                  <div class="product-thumb"><img src="img/hong.png" alt="hong"></div>
+                  <div class="product-tag">red ginseng</div>
+                  <div class="product-name">기운가득 홍삼</div>
+                  <div class="product-price">79,000원</div>
+                  <a href="product/product.html" class="product-link">자세히 보기 →</a>
+                </article>
+
+                <article class="product-card">
+                  <div class="product-thumb"><img src="img/nok.png" alt="nok"></div>
+                  <div class="product-tag">Ssanghwa</div>
+                  <div class="product-name">김순렬 원장의 녹용쌍화보감</div>
+                  <div class="product-price">99,000원</div>
+                  <a href="product/product.html" class="product-link">자세히 보기 →</a>
+                </article>
+
+                <article class="product-card">
+                  <div class="product-thumb"><img src="img/phong.png" alt="phong"></div>
+                  <div class="product-tag">red ginseng</div>
+                  <div class="product-name">에브리삼 홍삼</div>
+                  <div class="product-price">23,000원</div>
+                  <a href="product/product.html" class="product-link">자세히 보기 →</a>
+                </article>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- INSTAGRAM -->
+      <section class="section section--translucent section-wide">
+        <div class="container-wide">
+          <div class="section-wide-inner">
+            <div class="insta-header">
+              <div>
+                <div class="insta-handle"><a href="https://www.instagram.com/mgswellness_official/" target="_blank">@mgswellness_official</a></div>
+                <div class="section-kicker">INSTAGRAM</div>
+              </div>
+            </div>
+
+            <div class="instagram-grid">
+              <a
+                href="https://www.instagram.com/p/DOvFB9Ykq2S/?img_index=1"
+                class="insta-item"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="img/insta_1.jpg" alt="Instagram post">
+                <span class="insta-heart">♥</span>
+              </a>
+              <a
+                href="https://www.instagram.com/p/DOFvJiVEt9t/?img_index=1"
+                class="insta-item"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="img/insta_2.jpg" alt="Instagram post">
+                <span class="insta-heart">♥</span>
+              </a>
+                            <a
+                href="https://www.instagram.com/p/DOm079nkhMy/?img_index=1"
+                class="insta-item"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="img/insta_3.jpg" alt="Instagram post">
+                <span class="insta-heart">♥</span>
+              </a>
+                            <a
+                href="https://www.instagram.com/p/DPDsxWokrHl/?img_index=1"
+                class="insta-item"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="img/insta_4.jpg" alt="Instagram post">
+                <span class="insta-heart">♥</span>
+              </a>
+                            <a
+                href="https://www.instagram.com/p/DNE_gokvnWt/?img_index=1"
+                class="insta-item"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="img/insta_5.jpg" alt="Instagram post">
+                <span class="insta-heart">♥</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <p>© 2025 맑은샘생활건강. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>
